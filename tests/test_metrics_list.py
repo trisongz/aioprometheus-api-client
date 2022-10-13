@@ -1,7 +1,7 @@
 """Unit Tests for MetricsList."""
 import unittest
 import datetime
-from prometheus_api_client import MetricsList
+from aioprometheus_api_client import MetricsList
 from .test_with_metrics import TestWithMetrics
 
 

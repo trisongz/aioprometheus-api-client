@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 import requests
 from requests.packages.urllib3.util.retry import Retry
 
-from prometheus_api_client import MetricsList, PrometheusConnect, PrometheusApiClientException
+from aioprometheus_api_client import MetricsList, PrometheusConnect, PrometheusApiClientException
 
 from .mocked_network import BaseMockedNetworkTestcase
 

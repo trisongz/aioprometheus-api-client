@@ -3,7 +3,7 @@ from pandas import DataFrame, to_datetime
 from pandas._typing import Axes, Dtype
 from typing import Optional, Sequence
 
-from prometheus_api_client.exceptions import MetricValueConversionError
+from aioprometheus_api_client.exceptions import MetricValueConversionError
 
 
 class MetricRangeDataFrame(DataFrame):
@@ -60,11 +60,8 @@ class MetricRangeDataFrame(DataFrame):
         ts_as_datetime: bool = True,
     ):
         """Functions as a constructor for MetricRangeDataFrame class."""
-        if data is not None:
-            # if just a single json instead of list/set/other sequence of jsons,
-            # treat as list with single entry
-            if not isinstance(data, Sequence):
-                data = [data]
+        if data is not None and not isinstance(data, Sequence):
+            data = [data]
 
         row_data = []
         for v in data:
@@ -77,10 +74,9 @@ class MetricRangeDataFrame(DataFrame):
                 if isinstance(metric_value, str):
                     try:
                         metric_value = float(metric_value)
-                    except (TypeError, ValueError):
-                        raise MetricValueConversionError(
-                            "Converting string metric value to float failed."
-                        )
+                    except (TypeError, ValueError) as e:
+                        raise MetricValueConversionError("Converting string metric value to float failed.") from e
+
                 row_data.append({**v["metric"], "timestamp": t[0], "value": metric_value})
 
         # init df normally now

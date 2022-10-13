@@ -1,6 +1,6 @@
-# prometheus-api-client
+# aioprometheus-api-client
 
-[![PyPI version](https://badge.fury.io/py/prometheus-api-client.svg)](https://badge.fury.io/py/prometheus-api-client) [![PyPI download month](https://img.shields.io/pypi/dm/prometheus-api-client.svg)](https://pypi.python.org/pypi/prometheus-api-client/)
+[![PyPI version](https://badge.fury.io/py/aioprometheus-api-client.svg)](https://badge.fury.io/py/aioprometheus-api-client) [![PyPI download month](https://img.shields.io/pypi/dm/aioprometheus-api-client.svg)](https://pypi.python.org/pypi/aioprometheus-api-client/)
 
 A Python wrapper for the Prometheus http api and some tools for metrics processing.
 
@@ -8,11 +8,11 @@ A Python wrapper for the Prometheus http api and some tools for metrics processi
 
 To install the latest release:
 
-`pip install prometheus-api-client`
+`pip install aioprometheus-api-client`
 
 To install directly from this branch:
 
-`pip install https://github.com/4n4nd/prometheus-api-client-python/zipball/master`
+`pip install git+https://github.com/trisongz/aioprometheus-api-client`
 
 ## Links
 

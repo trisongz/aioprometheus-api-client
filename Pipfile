@@ -10,7 +10,8 @@ sphinx = "*"
 sphinx-rtd-theme = "*"
 
 [packages]
-requests = "*"
+anyio = "*"
+httpx = "*"
 dateparser = "*"
 pandas = ">=1.0.0"
 matplotlib = "*"

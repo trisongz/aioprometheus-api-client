@@ -5,8 +5,8 @@ import os
 
 import pytest
 
-from prometheus_api_client import MetricSnapshotDataFrame
-from prometheus_api_client.exceptions import MetricValueConversionError
+from aioprometheus_api_client import MetricSnapshotDataFrame
+from aioprometheus_api_client.exceptions import MetricValueConversionError
 from pandas.api.types import is_datetime64_any_dtype as is_dtype_datetime
 
 

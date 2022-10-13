@@ -3,7 +3,7 @@ from pandas import DataFrame, to_datetime
 from pandas._typing import Axes, Dtype
 from typing import Optional, Sequence
 
-from prometheus_api_client.exceptions import MetricValueConversionError
+from aioprometheus_api_client.exceptions import MetricValueConversionError
 
 
 class MetricSnapshotDataFrame(DataFrame):
@@ -97,6 +97,6 @@ class MetricSnapshotDataFrame(DataFrame):
         if isinstance(value, str):
             try:
                 value = float(value)
-            except (TypeError, ValueError):
-                raise MetricValueConversionError("Converting string metric value to float failed.")
+            except (TypeError, ValueError) as e:
+                raise MetricValueConversionError("Converting string metric value to float failed.") from e
         return {"timestamp": val[0], "value": value}

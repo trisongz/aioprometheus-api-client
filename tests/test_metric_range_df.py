@@ -3,8 +3,8 @@ import unittest
 import pandas as pd
 import pytest
 
-from prometheus_api_client import MetricRangeDataFrame
-from prometheus_api_client.exceptions import MetricValueConversionError
+from aioprometheus_api_client import MetricRangeDataFrame
+from aioprometheus_api_client.exceptions import MetricValueConversionError
 from .test_with_metrics import TestWithMetrics
 
 

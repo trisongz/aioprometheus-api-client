@@ -15,7 +15,7 @@ def get_install_requires():
 
 def get_version():
     """Get package version."""
-    with open(os.path.join("prometheus_api_client", "__init__.py")) as f:
+    with open(os.path.join("aioprometheus_api_client", "__init__.py")) as f:
         content = f.readlines()
 
     for line in content:
@@ -27,14 +27,14 @@ def get_version():
 
 VERSION = get_version()
 setuptools.setup(
-    name="prometheus-api-client",
+    name="aioprometheus-api-client",
     version=VERSION,
-    author="Anand Sanmukhani",
+    author="Tri Songz",
     author_email="asanmukhani@microsoft.com",
-    description="A small python api to collect data from prometheus",
+    description="An async python api to collect data from prometheus",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/4n4nd/prometheus-api-client-python",
+    url="https://github.com/trisongz/aioprometheus-api-client",
     install_requires=get_install_requires(),
     packages=setuptools.find_packages(),
     tests_require=["httmock"],

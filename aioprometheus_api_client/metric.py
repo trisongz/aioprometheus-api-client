@@ -3,7 +3,7 @@ from copy import deepcopy
 import datetime
 import pandas
 
-from prometheus_api_client.exceptions import MetricValueConversionError
+from aioprometheus_api_client.exceptions import MetricValueConversionError
 
 try:
     import matplotlib.pyplot as plt
@@ -109,9 +109,7 @@ class Metric:
         :return: (bool) If two Metric objects belong to the same time-series,
                  i.e. same name and label config, it will return True, else False
         """
-        return bool(
-            (self.metric_name == other.metric_name) and (self.label_config == other.label_config)
-        )
+        return self.metric_name == other.metric_name and self.label_config == other.label_config
 
     def __str__(self):
         """
@@ -125,9 +123,9 @@ class Metric:
               print(metric_1) # will print the name, labels and the head of the dataframe
 
         """
-        name = "metric_name: " + repr(self.metric_name) + "\n"
-        labels = "label_config: " + repr(self.label_config) + "\n"
-        values = "metric_values: " + repr(self.metric_values)
+        name = f"metric_name: {repr(self.metric_name)}" + "\n"
+        labels = f"label_config: {repr(self.label_config)}" + "\n"
+        values = f"metric_values: {repr(self.metric_values)}"
 
         return "{" + "\n" + name + labels + values + "\n" + "}"
 
