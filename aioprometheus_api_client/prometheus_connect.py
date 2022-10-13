@@ -900,20 +900,22 @@ class PrometheusConnect:
         Return the values for a saved query.
         """
         assert name in self._saved_queries, f"Saved query {name} not found"
-        saved_query = self._saved_queries[name]
-        params = params or saved_query.params
+        # saved_query = self._saved_queries[name]
+        params = params or self._saved_queries[name].params
         if start_time and end_time:
-            return self.custom_query_range(
-                query = saved_query.query, 
+            self._saved_queries[name].value = self.custom_query_range(
+                query = self._saved_queries[name].query, 
                 start_time = start_time, 
                 end_time = end_time, 
                 step = step,
                 params = params
             )
-        return self.custom_query(
-            query = saved_query.query,
-            params = params
-        )
+        else:
+            self._saved_queries[name].value = self.custom_query(
+                query = self._saved_queries[name].query,
+                params = params
+            )
+        return self._saved_queries[name].value
 
     async def async_get(
         self, 
@@ -927,18 +929,19 @@ class PrometheusConnect:
         Return the values for a saved query.
         """
         assert name in self._saved_queries, f"Saved query {name} not found"
-        saved_query = self._saved_queries[name]
-        params = params or saved_query.params
+        # saved_query = self._saved_queries[name]
+        params = params or self._saved_queries[name].params
         if start_time and end_time:
-            return await self.async_custom_query_range(
-                query = saved_query.query, 
+            self._saved_queries[name].value = await self.async_custom_query_range(
+                query = self._saved_queries[name].query, 
                 start_time = start_time, 
                 end_time = end_time, 
                 step = step,
                 params = params
             )
-        
-        return await self.async_custom_query(
-            query = saved_query.query,
-            params = params
-        )
+        else:
+            self._saved_queries[name].value = await self.async_custom_query(
+                query = self._saved_queries[name].query,
+                params = params
+            )
+        return self._saved_queries[name].value
